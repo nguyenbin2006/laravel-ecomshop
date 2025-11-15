@@ -5,8 +5,7 @@ Dự án bao gồm trang quản trị và trang cửa hàng hiện đại.
 
 ## 📸 (Ảnh chụp màn hình)
 
-| Trang Cửa hàng (Storefront) | Trang Giỏ hàng | Trang Admin (Quản lý Sản phẩm) |
-| ----------------------------------------------------------------------------- |
+| Trang Cửa hàng (Storefront) | Trang Giỏ hàng | Trang Admin (Quản lý Sản phẩm) 
 | ![Trang Shop](https://github.com/nguyenbin2006/laravel-ecomshop/blob/main/shop.png?raw=true) 
 | ![Trang Giỏ hàng](https://github.com/nguyenbin2006/laravel-ecomshop/blob/main/cart.png?raw=true) 
 | ![Trang Admin](https://github.com/nguyenbin2006/laravel-ecomshop/blob/main/admin.png?raw=true) 
@@ -42,14 +41,14 @@ Dự án được chia làm 2 phần chính với các tính năng cần dùng:
 
 ---
 
-##  cài đặt và Chạy dự án
+###  Cài đặt và Chạy dự án
 
 ### 1. Clone dự án
 ```bash
 git clone [https://github.com/nguyenbin2006/laravel-ecomshop.git](https://github.com/nguyenbin2006/laravel-ecomshop.git)
 cd laravel-ecom-shop
 
-### 2.Cài đặt Dependencies
+### 2. Cài đặt Dependencies
 ```bash
 composer install
 npm install
