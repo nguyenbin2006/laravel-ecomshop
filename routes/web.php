@@ -5,8 +5,10 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,7 +37,14 @@ Route::post('/checkout', [CheckoutController::class, 'store'])->name('checkout.s
 Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    // Kiểm tra xem người dùng đã đăng nhập có phải là admin không
+    if (Auth::user()->is_admin) {
+        // Nếu là Admin, chuyển hướng sang trang Admin Dashboard
+        return redirect()->route('admin.dashboard');
+    } else {
+        // Nếu là User thường, hiển thị trang dashboard bình thường
+        return redirect()->route('shop.index');
+    }
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () { // <-- DÁN VÀO ĐÂY
@@ -66,4 +75,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     // CRUD cho Products
     Route::resource('products', ProductController::class); // Tên đúng: admin.products.index, v.v.
+
+    Route::resource('users', UserController::class)->only(['index', 'destroy']);
 });
