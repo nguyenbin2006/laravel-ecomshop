@@ -1,39 +1,52 @@
-<!DOCTYPE html>
-<html lang="en">
-<head><title>Sửa Danh mục: {{ $category->name }}</title></head>
-<body>
-    <h1>Sửa Danh mục: {{ $category->name }}</h1>
-    <a href="{{ route('admin.categories.index') }}">Quay lại danh sách</a>
-    <hr>
+@extends('layouts.admin')
 
-    @if ($errors->any())
-        <div style="color: red;">
-            <strong>Rất tiếc! Đã có lỗi xảy ra:</strong>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+@section('title', 'Sửa Danh mục')
+@section('page-title')
+    Sửa Danh mục: <span class="text-primary">{{ $category->name }}</span>
+@endsection
 
-    <form action="{{ route('admin.categories.update', $category) }}" method="POST">
-        @csrf @method('PUT') <div style="margin-bottom: 10px;">
-            <label for="name">Tên Danh mục:</label><br>
-            <input type="text" id="name" name="name" value="{{ old('name', $category->name) }}" style="width: 300px;">
+@section('content')
+<div class="row">
+    <div class="col-lg-8">
+        <div class="card card-primary">
+            <div class="card-header">
+                <h3 class="card-title">Form Sửa Danh mục</h3>
+            </div>
+            @if ($errors->any())
+                <div class="alert alert-danger m-3">
+                    <strong>Rất tiếc! Đã có lỗi xảy ra:</strong>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form action="{{ route('admin.categories.update', $category) }}" method="POST">
+                @csrf
+                @method('PUT') <div class="card-body">
+                    <div class="form-group">
+                        <label for="name">Tên Danh mục</label>
+                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name', $category->name) }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="slug">Slug (URL)</label>
+                        <input type="text" class="form-control" id="slug" name="slug" value="{{ old('slug', $category->slug) }}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Mô tả</label>
+                        <textarea class="form-control" id="description" name="description" rows="3">{{ old('description', $category->description) }}</textarea>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Cập nhật Danh mục</button>
+                    <a href="{{ route('admin.categories.index') }}" class="btn btn-secondary">Hủy bỏ</a>
+                </div>
+            </form>
         </div>
-        
-        <div style="margin-bottom: 10px;">
-            <label for="slug">Slug (URL):</label><br>
-            <input type="text" id="slug" name="slug" value="{{ old('slug', $category->slug) }}" style="width: 300px;">
         </div>
-        
-        <div style="margin-bottom: 10px;">
-            <label for="description">Mô tả:</label><br>
-            <textarea id="description" name="description" rows="4" style="width: 300px;">{{ old('description', $category->description) }}</textarea>
-        </div>
-        
-        <button type="submit">Cập nhật Danh mục</button>
-    </form>
-</body>
-</html>
+</div>
+@endsection
