@@ -43,7 +43,7 @@ Dự án được chia làm 2 phần chính với các tính năng cần dùng:
 
 ###  Cài đặt và Chạy dự án
 
-### 1. Clone dự án
+### Clone dự án
 ```bash
 git clone [https://github.com/nguyenbin2006/laravel-ecomshop.git](https://github.com/nguyenbin2006/laravel-ecomshop.git)
 cd laravel-ecom-shop
