@@ -1,59 +1,94 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Dự án E-commerce: Ecom-Shop (Laravel)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Đây là một dự án E-commerce đầy đủ chức năng được xây dựng bằng Laravel Framework. 
+Dự án bao gồm trang quản trị và trang cửa hàng hiện đại.
 
-## About Laravel
+## 📸 (Ảnh chụp màn hình)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+| Trang Cửa hàng (Storefront) | Trang Giỏ hàng | Trang Admin (Quản lý Sản phẩm) |
+| ----------------------------------------------------------------------------- |
+| ![Trang Shop](https://github.com/nguyenbin2006/laravel-ecomshop/blob/main/shop.png?raw=true) 
+| ![Trang Giỏ hàng](https://github.com/nguyenbin2006/laravel-ecomshop/blob/main/cart.png?raw=true) 
+| ![Trang Admin](https://github.com/nguyenbin2006/laravel-ecomshop/blob/main/admin.png?raw=true) 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 🚀 Các Tính Năng Chính
 
-## Learning Laravel
+Dự án được chia làm 2 phần chính với các tính năng cần dùng:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 1. Trang Quản trị (Admin Panel)
+* **Phân quyền:** Xác thực (Login) và Phân quyền (Middleware) cho Admin.
+* **CRUD Sản phẩm:** Quản lý sản phẩm (Thêm, Sửa, Xóa), bao gồm **Upload Ảnh** và xử lý **Khóa ngoại** (với Danh mục).
+* **CRUD Danh mục:** Quản lý danh mục sản phẩm.
+* **CRUD Người dùng:** Quản lý tài khoản người dùng (Admin/User).
+* **Giao diện:** Sử dụng template **AdminLTE 3** (Bootstrap).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 2. Cửa hàng (Storefront) & Logic E-commerce
+* **Giỏ hàng:** Quản lý giỏ hàng bằng **Session** (Thêm, Sửa, Xóa sản phẩm).
+* **Đặt hàng (Checkout):** Form điền thông tin khách hàng và xử lý đặt hàng.
+* **Database Transaction:** Đảm bảo tính toàn vẹn dữ liệu khi đặt hàng (tự động trừ kho, tạo đơn hàng).
+* **Giao diện:** Sử dụng **Tailwind CSS** hiện đại, responsive.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 🛠️ Công nghệ Sử dụng
 
-### Premium Partners
+* **Backend:** PHP 8.2, **Laravel 12**
+* **Frontend:** HTML, **Tailwind CSS**, JavaScript
+* **Admin Panel:** **AdminLTE 3** (Bootstrap 4)
+* **Database:** MySQL (hoặc PostgreSQL)
+* **Development:** Vite, Composer, Artisan
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+---
 
-## Contributing
+##  cài đặt và Chạy dự án
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 1. Clone dự án
+```bash
+git clone [https://github.com/nguyenbin2006/laravel-ecomshop.git](https://github.com/nguyenbin2006/laravel-ecomshop.git)
+cd laravel-ecom-shop
 
-## Code of Conduct
+### 2.Cài đặt Dependencies
+```bash
+composer install
+npm install
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 3.Cấu hình môi trường
+-Copy file .env.example thành .env:
+```bash
+cp .env.example .env
 
-## Security Vulnerabilities
+-Tạo App Key:
+```bash
+php artisan key:generate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+-Cấu hình CSDL (Database) trong file .env:
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=ecomshop
+DB_USERNAME=root
+DB_PASSWORD=
 
-## License
+### 4.Khởi tạo CSDL
+```bash
+php artisan migrate
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 5.Tạo Storage Link
+```bash
+php artisan storage:link
+
+### 6.Khởi chạy
+-Terminal 1 (Biên dịch Frontend):
+```bash
+npm run dev
+
+-Terminal 2 (Chạy Server):
+```bash
+php artisan serve
+
+### 7.Tài khoản Admin
+-Tạo một tài khoản mới tại /register.
+-Vào CSDL, mở bảng users và đổi cột is_admin của tài khoản đó thành 1.
+-Đăng nhập tại /login. Sẽ được chuyển hướng đến Admin Dashboard.
