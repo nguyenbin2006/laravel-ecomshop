@@ -3,6 +3,11 @@
 <head><title>Quản lý Danh mục</title></head>
 <body>
     <h1>Tất cả Danh mục ({{ $categories->count() }})</h1>
+    @if (session('success'))
+        <div style="color: green; background-color: #d4edda; padding: 10px; margin-bottom: 15px;">
+            {{ session('success') }}
+        </div>
+    @endif
     <a href="{{ route('admin.dashboard') }}">Quay lại Dashboard</a>
     <hr>
 
@@ -18,17 +23,28 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($categories as $category)
+            @forelse ($categories as $category)
                 <tr>
                     <td>{{ $category->id }}</td>
                     <td>{{ $category->name }}</td>
                     <td>{{ $category->slug }}</td>
                     <td>
-                        <a href="#">Sửa</a>
-                        <a href="#">Xóa</a>
+                        <a href="{{ route('admin.categories.edit', $category) }}">Sửa</a>
+                        <form action="{{ route('admin.categories.destroy', $category) }}" method="POST" style="display: inline-block;">
+                            @csrf
+                            @method('DELETE')
+                            <button type"submit" style="color: red; border: none; background: none; cursor: pointer;" 
+                                    onclick="return confirm('Bạn có chắc muốn xóa danh mục {{ $category->name }} không?')">
+                                Xóa
+                            </button>
+                        </form>
                     </td>
                 </tr>
-            @endforeach
+            @empty
+                <tr>
+                    <td colspan="4">Chưa có danh mục nào.</td>
+                </tr>
+            @endforelse
         </tbody>
     </table>
 </body>
